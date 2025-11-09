@@ -621,47 +621,45 @@ p {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.hero-cta {
+/* Hero Highlights */
+.hero-highlights {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    margin-top: 3rem;
 }
 
-.hero-cta .btn {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.hero-cta .btn-primary {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+.highlight-badge {
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.2rem 2rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
 }
 
-.hero-cta .btn-primary:hover {
-    background: white;
-    color: #667eea;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+.highlight-badge:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.hero-cta .btn-secondary {
-    background: transparent;
+.highlight-badge i {
+    font-size: 1.8rem;
+    color: #ffd700;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.highlight-badge span {
     color: white;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-}
-
-.hero-cta .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-3px);
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .scroll-indicator {
@@ -1696,6 +1694,46 @@ p {
 }
 
 @media (max-width: 968px) {
+    /* Hero Tablet */
+    .hero {
+        min-height: 70vh;
+        padding: 120px 0 80px;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+    }
+    
+    .hero-highlights {
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+    }
+    
+    .highlight-badge {
+        padding: 1rem 1.75rem;
+    }
+    
+    .highlight-badge i {
+        font-size: 1.6rem;
+    }
+    
+    .highlight-badge span {
+        font-size: 0.95rem;
+    }
+    
+    .scroll-indicator {
+        margin-top: 3rem;
+    }
+    
+    /* Contact & Summary */
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -1703,6 +1741,18 @@ p {
     
     .contact-info-card,
     .contact-form-card {
+        padding: 2rem;
+    }
+    
+    .summary-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-text {
+        padding: 2rem;
+    }
+    
+    .summary-highlights {
         padding: 2rem;
     }
 }
@@ -1750,16 +1800,36 @@ p {
     
     .hero-description {
         font-size: 1rem;
+        max-width: 100%;
     }
     
-    .hero-cta {
-        flex-direction: column;
-        align-items: stretch;
+    .hero-highlights {
+        gap: 1rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
     }
     
-    .btn {
-        width: 100%;
-        justify-content: center;
+    .highlight-badge {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+        flex: 1 1 auto;
+        min-width: 200px;
+    }
+    
+    .highlight-badge i {
+        font-size: 1.5rem;
+    }
+    
+    .highlight-badge span {
+        font-size: 0.9rem;
+    }
+    
+    .scroll-indicator {
+        margin-top: 2.5rem;
+    }
+    
+    .scroll-indicator span {
+        font-size: 0.85rem;
     }
     
     section {
@@ -1822,31 +1892,111 @@ p {
     }
     
     /* Contact Mobile */
-    .contact-card {
-        padding: 2rem;
+    .contact-grid {
+        grid-template-columns: 1fr;
     }
     
-    .contact-item {
-        flex-direction: column;
-        text-align: center;
+    .contact-info-card,
+    .contact-form-card {
+        padding: 1.5rem;
     }
     
-    .contact-actions {
-        flex-direction: column;
+    .contact-info-card h3,
+    .contact-form-card h3 {
+        font-size: 1.25rem;
     }
     
-    .contact-actions .btn {
-        width: 100%;
+    .contact-intro {
+        font-size: 0.95rem;
+    }
+    
+    .contact-items {
+        gap: 1rem;
+    }
+    
+    .contact-icon {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .contact-icon i {
+        font-size: 1.1rem;
+    }
+    
+    .contact-value {
+        font-size: 0.95rem;
+        word-break: break-word;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.95rem;
+    }
+    
+    .content-columns {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
 @media (max-width: 480px) {
+    /* Hero Extra Small Mobile */
+    .hero {
+        min-height: 100vh;
+        padding: 80px 0 40px;
+    }
+    
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.25rem;
+        line-height: 1.2;
     }
     
     .hero-subtitle {
-        font-size: 1.125rem;
+        font-size: 1.1rem;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .hero-badge {
+        font-size: 0.7rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .hero-highlights {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+    
+    .highlight-badge {
+        width: 100%;
+        padding: 0.875rem 1rem;
+        justify-content: center;
+        min-width: auto;
+    }
+    
+    .highlight-badge i {
+        font-size: 1.4rem;
+    }
+    
+    .highlight-badge span {
+        font-size: 0.85rem;
+        text-align: center;
+    }
+    
+    .scroll-indicator {
+        margin-top: 2rem;
+    }
+    
+    .scroll-indicator span {
+        font-size: 0.8rem;
+    }
+    
+    .scroll-arrow {
+        font-size: 1rem;
     }
     
     .section-title {
@@ -1868,6 +2018,50 @@ p {
     .header-contact {
         flex-direction: column;
         gap: 0.75rem;
+    }
+    
+    /* Contact Extra Small Mobile */
+    .contact-info-card,
+    .contact-form-card {
+        padding: 1.25rem;
+    }
+    
+    .contact-items {
+        gap: 0.75rem;
+    }
+    
+    .contact-item {
+        padding: 0.75rem;
+    }
+    
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .contact-value {
+        font-size: 0.9rem;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .btn-full {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .content-column h3 {
+        font-size: 1.1rem;
+    }
+    
+    .content-list li strong {
+        font-size: 0.95rem;
+    }
+    
+    .content-list li p {
+        font-size: 0.85rem;
     }
 }
 
@@ -2030,7 +2224,7 @@ p {
 @media print {
     .minimal-header,
     .scroll-to-top,
-    .hero-cta,
+    .hero-highlights,
     .scroll-indicator {
         display: none !important;
     }
