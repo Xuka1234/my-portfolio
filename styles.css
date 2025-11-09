@@ -1207,6 +1207,7 @@ p {
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-height: 420px; /* Set minimum height for consistency */
 }
 
 .project-card:hover {
@@ -1237,10 +1238,12 @@ p {
 }
 
 .project-content {
-    padding: 0 2rem 2rem;
+    padding: 0 2rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* Distribute space evenly */
+    min-height: 200px; /* Ensure consistent content area */
 }
 
 .project-content h3 {
@@ -1257,13 +1260,16 @@ p {
     line-height: 1.6;
     font-size: 0.95rem;
     flex-grow: 1;
+    display: flex;
+    align-items: flex-start; /* Align text to top */
 }
 
 .project-technologies {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
+    margin-top: auto; /* Push to bottom of content area */
 }
 
 .tech-tag {
@@ -1286,10 +1292,14 @@ p {
 }
 
 .project-footer {
-    padding: 1.5rem 2rem 2rem;
+    padding: 1.5rem 2rem;
     background: #f9fafb;
     border-top: 1px solid #e5e7eb;
     margin-top: auto;
+    min-height: 80px; /* Ensure consistent footer height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .project-impact {
@@ -1298,12 +1308,18 @@ p {
     border-radius: 12px;
     border-left: 4px solid #f59e0b;
     text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px; /* Consistent impact section height */
 }
 
 .impact-metric {
     color: #92400e;
     font-weight: 600;
     font-size: 0.85rem;
+    line-height: 1.4;
 }
 
 /* Skills Section */
@@ -1590,15 +1606,17 @@ p {
     
     .project-card {
         margin: 0 1rem;
-        min-height: auto; /* Cho phép card co lại trên mobile */
+        min-height: 380px; /* Smaller but still consistent on mobile */
     }
     
     .project-content {
         padding: 1.5rem;
+        min-height: 180px; /* Adjust for mobile */
     }
     
     .project-footer {
-        padding: 0 1.5rem 1.5rem;
+        padding: 1rem 1.5rem;
+        min-height: 70px; /* Adjust for mobile */
     }
     
     .project-metrics {
