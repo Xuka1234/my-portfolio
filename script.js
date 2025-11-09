@@ -367,7 +367,7 @@ class GeometricBackground {
     init() {
         this.addMouseInteraction();
         this.addRandomMovement();
-        this.addColorShift();
+        // this.addColorShift(); // Disabled to prevent flickering
     }
 
     addMouseInteraction() {
@@ -408,16 +408,19 @@ class GeometricBackground {
     }
 
     addColorShift() {
+        // Subtle color animation - much slower and less noticeable
         let hue = 0;
         setInterval(() => {
-            hue = (hue + 1) % 360;
+            hue = (hue + 0.1) % 360; // Very slow change
             const hero = document.querySelector('.hero');
             if (hero) {
+                const transition = 'background 2s ease-in-out'; // Add smooth transition
+                hero.style.transition = transition;
                 hero.style.background = `linear-gradient(135deg, 
-                    hsl(${240 + Math.sin(hue * 0.01) * 30}, 70%, 65%) 0%, 
-                    hsl(${280 + Math.cos(hue * 0.01) * 30}, 60%, 55%) 100%)`;
+                    hsl(${240 + Math.sin(hue * 0.002) * 10}, 70%, 65%) 0%, 
+                    hsl(${280 + Math.cos(hue * 0.002) * 10}, 60%, 55%) 100%)`;
             }
-        }, 100);
+        }, 2000); // Much slower - every 2 seconds
     }
 }
 
