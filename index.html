@@ -14,6 +14,12 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Typed.js for typing animations -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    
+    <!-- Chart.js for skill visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -36,30 +42,68 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="animated-background">
+            <div class="geometric-shape shape-1"></div>
+            <div class="geometric-shape shape-2"></div>
+            <div class="geometric-shape shape-3"></div>
+            <div class="geometric-shape shape-4"></div>
+            <div class="geometric-shape shape-5"></div>
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+            <div class="floating-orb orb-3"></div>
+            <div class="wave-animation">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </div>
         <div class="container">
             <div class="hero-content" data-aos="fade-up">
                 <div class="hero-badge" data-aos="fade-down" data-aos-delay="200">
                     Product Manager & Digital Transformation Leader
                 </div>
                 <h1 class="hero-title">Trinh Le</h1>
-                <h2 class="hero-subtitle">Associate Manager, Operational Excellence</h2>
+                <h2 class="hero-subtitle">
+                    <span id="typed-text"></span>
+                </h2>
                 <p class="hero-description">
                     Driving innovation through data-driven product management, operational excellence, 
                     and digital transformation initiatives that deliver measurable business impact.
                 </p>
                 <div class="hero-stats">
                     <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
                         <span class="stat-number">3,000+</span>
                         <span class="stat-label">Hours Saved Annually</span>
                     </div>
                     <div class="stat-item" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
                         <span class="stat-number">30%</span>
                         <span class="stat-label">Online Transaction Growth</span>
                     </div>
                     <div class="stat-item" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
                         <span class="stat-number">92.5%</span>
                         <span class="stat-label">Renewal Rate Achieved</span>
                     </div>
+                </div>
+                <div class="hero-cta" data-aos="fade-up" data-aos-delay="700">
+                    <a href="#experience" class="btn btn-primary">
+                        <i class="fas fa-briefcase"></i>
+                        View My Experience
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
                 </div>
                 <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="800">
                     <span>Scroll to explore my journey</span>
@@ -209,35 +253,62 @@
             
             <div class="projects-grid">
                 <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-icon">
-                        <i class="fas fa-cogs"></i>
+                    <div class="project-header">
+                        <span class="project-category">Process Automation</span>
                     </div>
-                    <h3>Operational Excellence & Digital Transformation</h3>
-                    <p>Led automation initiatives including STP workflows and automated processes for claims and policy services.</p>
-                    <div class="project-impact">
-                        <span class="impact-metric">3,000+ man-hours saved annually</span>
+                    <div class="project-content">
+                        <h3>Operational Excellence & Digital Transformation</h3>
+                        <p>Led automation initiatives including STP workflows and automated processes for claims and policy services. Successfully implemented across 15+ teams over 6-month timeline with significant efficiency improvements.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Process Design</span>
+                            <span class="tech-tag">Automation</span>
+                            <span class="tech-tag">Digital Transform</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-impact">
+                            <span class="impact-metric">3,000+ hours saved annually</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                    <div class="project-header">
+                        <span class="project-category">Product Development</span>
                     </div>
-                    <h3>Customer Mobile Application</h3>
-                    <p>Served as Project Owner for the mobile app's entire lifecycle from UX design to functional requirements and testing.</p>
-                    <div class="project-impact">
-                        <span class="impact-metric">6% → 30% online transaction capability</span>
+                    <div class="project-content">
+                        <h3>Customer Mobile Application</h3>
+                        <p>Served as Project Owner for the mobile app's entire lifecycle from UX design to functional requirements and testing. Achieved 10K+ downloads with 4.8 star rating and significantly improved user engagement.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">UX/UI Design</span>
+                            <span class="tech-tag">Mobile Dev</span>
+                            <span class="tech-tag">Testing</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-impact">
+                            <span class="impact-metric">6% → 30% online transactions</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="project-header">
+                        <span class="project-category">Data Analytics</span>
                     </div>
-                    <h3>Persistency & Premium Collection</h3>
-                    <p>Analyzed customer behavior data and designed data-driven initiatives to optimize cost/benefit ratios.</p>
-                    <div class="project-impact">
-                        <span class="impact-metric">2% conversion rate • 92.5% renewal rate</span>
+                    <div class="project-content">
+                        <h3>Persistency & Premium Collection</h3>
+                        <p>Analyzed customer behavior data and designed data-driven initiatives to optimize cost/benefit ratios. Processed 100K+ data points with real-time analytics to drive business decisions.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Data Analytics</span>
+                            <span class="tech-tag">Business Intel</span>
+                            <span class="tech-tag">Optimization</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-impact">
+                            <span class="impact-metric">2% conversion rate • 92.5% renewal rate</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -248,57 +319,121 @@
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">Skills & Expertise</div>
                 <h2 class="section-title">Core Competencies</h2>
+                <p class="section-subtitle">A comprehensive overview of my technical and professional skills</p>
             </div>
             
             <div class="skills-grid">
                 <div class="skill-category" data-aos="fade-right">
-                    <h3>Product & Project Management</h3>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>Product & Project Management</h3>
+                    </div>
                     <div class="skill-list">
                         <div class="skill-item">
-                            <span>Data Analysis & Performance Reporting</span>
+                            <div class="skill-info">
+                                <span class="skill-name">Data Analysis & Performance Reporting</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
                         </div>
                         <div class="skill-item">
-                            <span>P&L Management</span>
+                            <div class="skill-info">
+                                <span class="skill-name">P&L Management</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
                         </div>
                         <div class="skill-item">
-                            <span>Customer-Centric Approach</span>
+                            <div class="skill-info">
+                                <span class="skill-name">Customer-Centric Approach</span>
+                                <span class="skill-percentage">98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="98"></div>
+                            </div>
                         </div>
                         <div class="skill-item">
-                            <span>Digital Product Development</span>
+                            <div class="skill-info">
+                                <span class="skill-name">Digital Product Development</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
                         </div>
                         <div class="skill-item">
-                            <span>Process Optimization</span>
-                        </div>
-                        <div class="skill-item">
-                            <span>Cross-functional Coordination</span>
-                        </div>
-                        <div class="skill-item">
-                            <span>Stakeholder Management</span>
+                            <div class="skill-info">
+                                <span class="skill-name">Process Optimization</span>
+                                <span class="skill-percentage">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="skill-category" data-aos="fade-left">
-                    <h3>Technical Skills</h3>
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Technical Skills</h3>
+                    </div>
                     <div class="skill-list">
                         <div class="skill-item">
-                            <span>Figma (Wireframes, Prototypes)</span>
-                            <div class="skill-level advanced"></div>
+                            <div class="skill-info">
+                                <span class="skill-name">Figma (Wireframes, Prototypes)</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
                         </div>
                         <div class="skill-item">
-                            <span>MS Excel & PowerPoint</span>
-                            <div class="skill-level advanced"></div>
+                            <div class="skill-info">
+                                <span class="skill-name">MS Excel & PowerPoint</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
                         </div>
                         <div class="skill-item">
-                            <span>Jira, Trello</span>
-                            <div class="skill-level proficient"></div>
+                            <div class="skill-info">
+                                <span class="skill-name">Jira, Trello</span>
+                                <span class="skill-percentage">82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="82"></div>
+                            </div>
                         </div>
                         <div class="skill-item">
-                            <span>Full SDLC Experience</span>
-                            <div class="skill-level proficient"></div>
+                            <div class="skill-info">
+                                <span class="skill-name">Full SDLC Experience</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Skills Chart Section -->
+            <div class="skills-chart-section" data-aos="fade-up" data-aos-delay="200">
+                <h3>Skills Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="skillsChart"></canvas>
                 </div>
             </div>
         </div>

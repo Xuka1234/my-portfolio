@@ -6,6 +6,90 @@ AOS.init({
     mirror: false
 });
 
+// Advanced Background Animation
+class GeometricBackground {
+    constructor() {
+        this.shapes = document.querySelectorAll('.geometric-shape');
+        this.orbs = document.querySelectorAll('.floating-orb');
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.init();
+    }
+
+    init() {
+        this.addMouseInteraction();
+        this.addRandomMovement();
+        this.addColorShift();
+    }
+
+    addMouseInteraction() {
+        document.addEventListener('mousemove', (e) => {
+            this.mouseX = e.clientX / window.innerWidth;
+            this.mouseY = e.clientY / window.innerHeight;
+            
+            this.shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.5;
+                const xMove = (this.mouseX - 0.5) * speed * 50;
+                const yMove = (this.mouseY - 0.5) * speed * 50;
+                
+                shape.style.transform = `translate(${xMove}px, ${yMove}px) rotate(${this.mouseX * 360}deg)`;
+            });
+
+            this.orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 0.3;
+                const xMove = (this.mouseX - 0.5) * speed * 30;
+                const yMove = (this.mouseY - 0.5) * speed * 30;
+                
+                orb.style.transform = `translate(${xMove}px, ${yMove}px) scale(${1 + this.mouseY * 0.2})`;
+            });
+        });
+    }
+
+    addRandomMovement() {
+        setInterval(() => {
+            this.shapes.forEach((shape) => {
+                const randomX = Math.random() * 20 - 10;
+                const randomY = Math.random() * 20 - 10;
+                const currentTransform = shape.style.transform || '';
+                
+                if (!currentTransform.includes('translate')) {
+                    shape.style.transform += ` translate(${randomX}px, ${randomY}px)`;
+                }
+            });
+        }, 3000);
+    }
+
+    addColorShift() {
+        let hue = 0;
+        setInterval(() => {
+            hue = (hue + 1) % 360;
+            const hero = document.querySelector('.hero');
+            hero.style.background = `linear-gradient(135deg, 
+                hsl(${240 + Math.sin(hue * 0.01) * 30}, 70%, 65%) 0%, 
+                hsl(${280 + Math.cos(hue * 0.01) * 30}, 60%, 55%) 100%)`;
+        }, 100);
+    }
+}
+
+// Initialize custom background
+const geometricBg = new GeometricBackground();
+
+// Initialize Typed.js for hero subtitle
+const typed = new Typed('#typed-text', {
+    strings: [
+        'Associate Manager, Operational Excellence',
+        'Product Management Expert',
+        'Digital Transformation Leader',
+        'Innovation Driver'
+    ],
+    typeSpeed: 80,
+    backSpeed: 50,
+    backDelay: 2000,
+    loop: true,
+    showCursor: true,
+    cursorChar: '|'
+});
+
 // Smooth scrolling for any anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -95,40 +179,93 @@ function animateCounter(element, start, end, suffix, duration) {
     requestAnimationFrame(updateCounter);
 }
 
+// Skill bars animation
+const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const skillBars = entry.target.querySelectorAll('.skill-progress');
+            skillBars.forEach((bar, index) => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width + '%';
+                }, index * 200);
+            });
+            skillsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+
+const skillsSection = document.querySelector('.skills');
+if (skillsSection) {
+    skillsObserver.observe(skillsSection);
+}
+
+// Initialize Skills Chart
+const chartObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            initSkillsChart();
+            chartObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+
+const chartSection = document.querySelector('.skills-chart-section');
+if (chartSection) {
+    chartObserver.observe(chartSection);
+}
+
+function initSkillsChart() {
+    const ctx = document.getElementById('skillsChart');
+    if (!ctx) return;
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Product Management', 'Data Analysis', 'Digital Transformation', 'Process Optimization', 'Technical Skills'],
+            datasets: [{
+                data: [95, 90, 85, 92, 80],
+                backgroundColor: [
+                    '#667eea',
+                    '#764ba2',
+                    '#48bb78',
+                    '#ed8936',
+                    '#38b2ac'
+                ],
+                borderWidth: 0,
+                cutout: '60%'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        usePointStyle: true,
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            },
+            animation: {
+                animateRotate: true,
+                duration: 2000
+            }
+        }
+    });
+}
+
 // Parallax effect for hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
     if (hero) {
-        const rate = scrolled * -0.2;
+        const rate = scrolled * -0.1;
         hero.style.transform = `translateY(${rate}px)`;
-    }
-});
-
-// Typing effect for hero subtitle
-function typeWriter(element, text, speed = 100) {
-    element.textContent = '';
-    let i = 0;
-    
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
-}
-
-// Initialize typing effect on page load
-document.addEventListener('DOMContentLoaded', () => {
-    const heroSubtitle = document.querySelector('.hero-subtitle');
-    if (heroSubtitle) {
-        const originalText = heroSubtitle.textContent;
-        setTimeout(() => {
-            typeWriter(heroSubtitle, originalText, 80);
-        }, 1000);
     }
 });
 
@@ -190,20 +327,31 @@ scrollToTopBtn.addEventListener('mouseleave', () => {
     scrollToTopBtn.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
 });
 
+// Project cards hover effects
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px) rotateX(5deg)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) rotateX(0deg)';
+    });
+});
+
 // Lazy loading for images
 if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                img.src = img.dataset.src;
+                img.src = img.dataset.src || img.src;
                 img.classList.remove('lazy');
                 imageObserver.unobserve(img);
             }
         });
     });
 
-    document.querySelectorAll('img[data-src]').forEach(img => {
+    document.querySelectorAll('img[data-src], img[loading="lazy"]').forEach(img => {
         imageObserver.observe(img);
     });
 }
@@ -257,5 +405,56 @@ style.textContent = `
     .stat-item:nth-child(1) { animation-delay: 0.1s; }
     .stat-item:nth-child(2) { animation-delay: 0.2s; }
     .stat-item:nth-child(3) { animation-delay: 0.3s; }
+    
+    .project-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .skill-progress {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .skill-progress::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .skill-item:hover .skill-progress::before {
+        left: 100%;
+    }
 `;
 document.head.appendChild(style);
+
+// Add loading animation
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+    
+    // Add some entrance animations
+    setTimeout(() => {
+        const heroElements = document.querySelectorAll('.hero-content > *');
+        heroElements.forEach((el, index) => {
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+    }, 100);
+});
+
+// Add CSS for loading state
+const loadingStyle = document.createElement('style');
+loadingStyle.textContent = `
+    body:not(.loaded) .hero-content > * {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+    }
+`;
+document.head.appendChild(loadingStyle);
